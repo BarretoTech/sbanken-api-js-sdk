@@ -1,0 +1,40 @@
+{
+  "name": "sbanken-api-sdk",
+  "version": "0.0.1-alpha.0",
+  "description": "SDK to communicate with the SBanken Beta REST API",
+  "main": "dist/api/index.js",
+  "types": "dist/api/index.d.ts",
+  "files": [
+    "dist/api/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "rm -rf ./dist/api && tsc",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhuanbarreto/sbanken-api-js-sdk.git"
+  },
+  "keywords": [
+    "sbanken",
+    "api",
+    "sdk"
+  ],
+  "author": {
+    "name": "Rhuan Barreto",
+    "url": "https://rhuan.com.br"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rhuanbarreto/sbanken-api-js-sdk/issues"
+  },
+  "homepage": "https://github.com/rhuanbarreto/sbanken-api-js-sdk#readme",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}

@@ -1,0 +1,32 @@
+name: Generate OpenAPI Spec
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - specs/*.yaml
+jobs:
+  generate-ts-client:
+    name: Generate Typescript Client
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Generate API Client
+        run: npx @openapitools/openapi-generator-cli generate -i specs/openapi.yaml -g typescript-fetch -o clients/api -c clients/config/typescript.json
+      - name: Generate Auth Client
+        run: npx @openapitools/openapi-generator-cli generate -i specs/auth.openapi.yaml -g typescript-fetch -o clients/auth -c clients/config/typescript.json
+      - name: Bump API Package Version
+        run: npm version prerelease
+        working-directory: clients/api
+      - name: Bump Auth Package Version
+        run: npm version prerelease
+        working-directory: clients/auth
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.CREATE_PR_TOKEN }}
+          commit-message: Updated OpenAPI spec
+          branch: update-openapi-spec
+          title: "chore: updated OpenAPI spec"
+          delete-branch: true

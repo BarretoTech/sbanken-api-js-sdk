@@ -1,0 +1,101 @@
+openapi: 3.0.1
+info:
+  title: SBanken
+  description: SBanken Authnetication API
+  version: "1.0"
+servers:
+  - url: https://auth.sbanken.no/identityserver/connect
+tags:
+  - name: Auth
+    description: Authentication Endpoint
+paths:
+  /token:
+    post:
+      summary: Generates a JWT access token
+      tags:
+        - Auth
+      operationId: getToken
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              title: AuthenticationRequest
+              type: object
+              properties:
+                grant_type:
+                  type: string
+                  default: client_credentials
+                  enum:
+                    - client_credentials
+      parameters:
+        - name: customerId
+          description: Your norwegian personal number
+          in: header
+          required: true
+          schema:
+            type: string
+            maxLength: 11
+            minLength: 11
+      responses:
+        "200":
+          $ref: "#/components/responses/TokenSuccessResponse"
+        "400":
+          $ref: "#/components/responses/TokenFailureResponse"
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: |
+        The username is your client ID.
+
+        The password is your URL-encoded client secret
+  schemas:
+    TokenSuccess:
+      type: object
+      additionalProperties: false
+      required:
+        - access_token
+        - expires_in
+        - token_type
+        - scope
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: number
+          default: 3600
+          example: 3600
+        token_type:
+          type: string
+          default: Bearer
+          enum:
+            - Bearer
+        scope:
+          type: string
+          default: GW.ApiBetaCustomer
+    TokenFailure:
+      type: object
+      additionalProperties: false
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          example: invalid_client
+          default: invalid_client
+  responses:
+    TokenSuccessResponse:
+      description: Response with Access Token
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/TokenSuccess"
+    TokenFailureResponse:
+      description: Response with Failure
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/TokenFailure"
+security:
+  - BasicAuth: []
