@@ -3,6 +3,9 @@ info:
   title: SBanken
   description: SBanken Beta API
   version: "2.0"
+  contact:
+    email: rhuan@barreto.work
+    name: Rhuan Barreto
 servers:
   - url: https://publicapi.sbanken.no/apibeta
 paths:
