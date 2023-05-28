@@ -6,6 +6,8 @@ info:
   contact:
     email: rhuan@barreto.work
     name: Rhuan Barreto
+  license:
+    name: Apache-2.0
 servers:
   - url: https://auth.sbanken.no/identityserver/connect
 tags:
