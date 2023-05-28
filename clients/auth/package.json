@@ -1,6 +1,6 @@
 {
   "name": "sbanken-auth-api-sdk",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "SDK to interface with the SBanken Authenticatrion API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
