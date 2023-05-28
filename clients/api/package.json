@@ -2,10 +2,10 @@
   "name": "sbanken-api-sdk",
   "version": "0.0.1-alpha.2",
   "description": "SDK to communicate with the SBanken Beta REST API",
-  "main": "dist/api/index.js",
-  "types": "dist/api/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist/api/**/*",
+    "dist/**/*",
     "README.md",
     "LICENSE"
   ],
@@ -13,7 +13,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "rm -rf ./dist/api && tsc",
+    "build": "rm -rf ./dist && tsc",
     "prepublish": "npm run build"
   },
   "repository": {

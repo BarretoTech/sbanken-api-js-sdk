@@ -23,9 +23,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Generate API Client
-        run: npx @openapitools/openapi-generator-cli generate -i specs/openapi.yaml -g typescript-fetch -o clients/api -c clients/config/typescript.json
+        run: |
+          npx @openapitools/openapi-generator-cli generate -i specs/openapi.yaml -g typescript-fetch -o clients/api -c clients/config/typescript.json
+          cd ./clients/api
+          npm install
       - name: Generate Auth Client
-        run: npx @openapitools/openapi-generator-cli generate -i specs/auth.openapi.yaml -g typescript-fetch -o clients/auth -c clients/config/typescript.json
+        run: |
+          npx @openapitools/openapi-generator-cli generate -i specs/auth.openapi.yaml -g typescript-fetch -o clients/auth -c clients/config/typescript.json
+          cd ./clients/auth
+          npm install
       - name: Bump API Package Version
         run: npm version prerelease
         working-directory: clients/api
