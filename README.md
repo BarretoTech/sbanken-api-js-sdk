@@ -1,6 +1,6 @@
 # SBanken API JS SDK
 
-This repo generate clients for the [SBanken](https://sbanken.no) API described in https://publicapi.sbanken.no/openapi/proxy/bff-apibeta/swagger/v2/swagger.json.
+This repo generate clients for the [SBanken](https://publicapi.sbanken.no/openapi/apibeta/index.html) API described in https://publicapi.sbanken.no/openapi/proxy/bff-apibeta/swagger/v2/swagger.json.
 
 The intention of this repo is to simplify the life of the developer trying to integrate their own personal finance with personal finance softwares.
 
