@@ -1,6 +1,6 @@
 {
   "name": "sbanken-api-sdk",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "description": "SDK to communicate with the SBanken Beta REST API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
